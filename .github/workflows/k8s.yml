@@ -45,5 +45,8 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-      - name: Run doctl cpmmands
+      - name: Run doctl commands
         run: doctl kubernetes cluster list
+
+      - name: Test kubectl
+        run: kubectl get all
