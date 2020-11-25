@@ -13,8 +13,8 @@ app.get("/", (req, res) => {
       email: "kareem.farahty@gmail.com",
     },
     {
-      user: "Sileen Farahty",
-      email: "sileen.nimer@gmail.com",
+      user: "Friends API",
+      email: "friends.api@gmail.com",
     },
   ]);
 });
