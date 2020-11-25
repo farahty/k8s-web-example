@@ -39,7 +39,7 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
       - name: connect kubetcl to our cluster
-        run: doctl kubernetes cluster kubeconfig save 92382941-ed20-40ca-b0fb-3490c3fa5b9b
+        run: doctl kubernetes cluster kubeconfig save ${{ secrets.CLUSTER_ID }}
 
       - name: restart cluster dep
         run: kubectl rollout restart deployment.apps/node-dep
