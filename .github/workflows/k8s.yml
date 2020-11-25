@@ -48,5 +48,8 @@ jobs:
       - name: Run doctl commands
         run: doctl kubernetes cluster list
 
+      - name: connect kubetcl to our cluster
+        run: doctl kubernetes cluster kubeconfig save 92382941-ed20-40ca-b0fb-3490c3fa5b9b
+
       - name: Test kubectl
         run: kubectl get all
