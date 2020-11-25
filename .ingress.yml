@@ -1,0 +1,46 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: farahty.com-ing
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  labels:
+    host: farahty.com
+spec:
+  tls:
+    - hosts:
+        - farahty.com
+        - staging.farahty.com
+        - prod.farahty.com
+      secretName: farahty-com-tls
+  rules:
+    - host: staging.farahty.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: node-srv
+                port:
+                  number: 80
+    - host: prod.farahty.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: node-srv
+                port:
+                  number: 80
+    - host: farahty.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: node-srv
+                port:
+                  number: 80
